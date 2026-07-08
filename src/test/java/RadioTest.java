@@ -195,12 +195,27 @@ public class RadioTest {
     }
 
     @Test
-    public void switchingMoreStations() {
-        Radio radio = new Radio(20);
+    public void nextSwitchingMoreStations() {
+        Radio radio = new Radio(30);
 
-        radio.setCurrentStation(15);
+        radio.setCurrentStation(30);
 
-        int expected = 15;
+        radio.next();
+
+        int expected = 1;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void prevSwitchingMoreStations() {
+        Radio radio = new Radio(30);
+
+        radio.setCurrentStation(0);
+
+        radio.prev();
+
+        int expected = 29;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
